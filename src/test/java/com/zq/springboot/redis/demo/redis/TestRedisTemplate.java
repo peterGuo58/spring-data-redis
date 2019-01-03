@@ -26,6 +26,7 @@ public class TestRedisTemplate {
         redisTemplate.opsForValue().set("neo", "ityouknow");
         redisTemplate.opsForValue().set("neo", "hello");
         Assert.assertEquals("hello", redisTemplate.opsForValue().get("neo"));
+        System.out.println("neo valus --->: "+redisTemplate.opsForValue().get("neo"));
     }
     
     @Test
