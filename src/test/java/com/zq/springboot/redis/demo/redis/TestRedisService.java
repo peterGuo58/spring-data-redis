@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
@@ -55,6 +56,16 @@ public class TestRedisService {
         redisService.hashSet("hash","you","you");
         String value=(String) redisService.hashGet("hash","you");
         System.out.println("hash value :"+value);
+    }
+
+    public void testList() throws Exception{
+        String key="list";
+        redisService.push(key,"it");
+        redisService.push(key,"it");
+        redisService.push(key,"you");
+        redisService.push(key,"know");
+        List<Object> value = redisService.range(key,0L,3L);
+        System.out.println("list value :"+value.toString());
     }
 
 }
